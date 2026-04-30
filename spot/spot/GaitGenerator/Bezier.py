@@ -1,6 +1,6 @@
 import numpy as np
 import math
-from qr_kinematics.LieAlgebra import TransToRp
+from ..Kinematics.LieAlgebra import TransToRp
 import copy
 
 STANCE = 0

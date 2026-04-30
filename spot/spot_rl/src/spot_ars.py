@@ -8,7 +8,7 @@ import sys
 sys.path.append('../../')
 
 from spot_gymenv.util.gui import GUI
-from spot_gymenv.GymEnvs.qr_bezier_env import spotBezierEnv
+from spot_gymenv.GymEnvs.spot_bezier_env import spotBezierEnv
 from spot.Kinematics.SpotKinematics import SpotModel
 from spot.GaitGenerator.Bezier import BezierGait
 from spot_gymenv.OpenLoopSM.SpotOL import BezierStepper
