@@ -1,0 +1,50 @@
+#컨트롤러 가제보 등에서 씀
+controller_manager:
+  ros__parameters:
+    update_rate: 50
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_trajectory_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_trajectory_controller:
+  ros__parameters:
+    joints:
+      - motor_front_left_hip
+      - motor_front_left_upper_leg
+      - motor_front_left_lower_leg
+      - motor_front_right_hip
+      - motor_front_right_upper_leg
+      - motor_front_right_lower_leg
+      - motor_back_left_hip
+      - motor_back_left_upper_leg
+      - motor_back_left_lower_leg
+      - motor_back_right_hip
+      - motor_back_right_upper_leg
+      - motor_back_right_lower_leg
+
+    # ★ effort 기반으로 가려면 여기 중요
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+
+    # ROS1의 gains를 ROS2에서도 여기 넣는다 (형식은 ROS2 doc 기준)
+    gains:
+      motor_front_left_hip:        {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_left_upper_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_left_lower_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_hip:       {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_upper_leg: {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_lower_leg: {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_hip:         {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_upper_leg:   {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_lower_leg:   {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_hip:        {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_upper_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_lower_leg:  {p: 1.0, i: 20.0, d: 0.9}
+
+    # (선택) constraints / goal_time 등은 기본값으로 시작해도 됨

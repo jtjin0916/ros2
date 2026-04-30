@@ -1,0 +1,52 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 50
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    joint_group_position_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+joint_group_position_controller:
+  ros__parameters:
+    joints:
+      - motor_front_left_hip
+      - motor_front_left_upper_leg
+      - motor_front_left_lower_leg
+      - motor_front_right_hip
+      - motor_front_right_upper_leg
+      - motor_front_right_lower_leg
+      - motor_back_left_hip
+      - motor_back_left_upper_leg
+      - motor_back_left_lower_leg
+      - motor_back_right_hip
+      - motor_back_right_upper_leg
+      - motor_back_right_lower_leg
+
+    # ROS2 trajectory controller가 쓸 command/state interface
+    command_interfaces:
+      - effort
+    state_interfaces:
+      - position
+      - velocity
+
+    # (옵션) publish rate 비슷한 역할
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+
+    # gains는 ROS2에서 보통 constraints/ 또는 per-joint pid 설정을 별도로 둠
+    # 아래는 "그대로"는 아니지만 최대한 유사하게 적어두는 형태(패키지/버전에 따라 키가 다를 수 있음)
+    gains:
+      motor_front_left_hip:        {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_left_upper_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_left_lower_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_hip:       {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_upper_leg: {p: 1.0, i: 20.0, d: 0.9}
+      motor_front_right_lower_leg: {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_hip:         {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_upper_leg:   {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_left_lower_leg:   {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_hip:        {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_upper_leg:  {p: 1.0, i: 20.0, d: 0.9}
+      motor_back_right_lower_leg:  {p: 1.0, i: 20.0, d: 0.9}
